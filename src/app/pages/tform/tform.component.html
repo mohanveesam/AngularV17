@@ -1,0 +1,41 @@
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="card p-2 w-50">
+    <h3 class="text-center mb-4">Template Driven Form</h3>
+    <form #userform="ngForm" (ngSubmit)="onSubmit(userform)">
+      <div clas="row">
+        <div>
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="user.name"
+            placeholder="Name"
+            #name="ngModel"
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="user.email"
+            placeholder="Email"
+            #email="ngModel"
+            required
+          />
+        </div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+<hr />
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="card p-2 w-50">
+    <h3 class="text-center mb-4">Submitted Users</h3>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of submittedusers">
+        {{ item.name }} - {{ item.email }}
+      </li>
+    </ul>
+  </div>
+</div>

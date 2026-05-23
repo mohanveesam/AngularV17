@@ -1,0 +1,53 @@
+html,
+.body {
+  height: 100%;
+  margin: 0px;
+  overflow: hidden; /* Prevent full page scroll */
+}
+.mainblock {
+  display: flex!important;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  height: 100%;
+  overflow-y: auto;
+  background: #1e293b;
+  color: white;
+  padding: 10px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 6px 0;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  padding: 2px 10px;
+  display: block;
+  border-radius: 6px;
+}
+
+.sidebar a:hover {
+  background: #334155;
+}
+
+.active {
+  background: #0ea5e9;
+}
+
+.content {
+  flex: 1;
+  height: 100%;       /* Important */
+  overflow-y: auto;   /* Only content scrolls */
+  padding: 25px;
+  background: #f1f5f9;
+}

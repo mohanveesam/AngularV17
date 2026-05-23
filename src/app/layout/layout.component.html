@@ -1,0 +1,22 @@
+<div class="mainblock row mx-0 px-0">
+  <!-- Sidebar -->
+  <div class="sidebar col-3">
+    <h3>Angular Practice</h3>
+    <ul>
+      <li><a routerLink="dashboard" routerLinkActive="active">Dashboard</a></li>
+      <li><a routerLink="dataiteration" routerLinkActive="active">Data Iteration</a></li>
+      <li>## Forms & Validation
+        <ul>
+          <li><a routerLink="rform" routerLinkActive="active">Reactive Form</a></li>
+          <li><a routerLink="tform" routerLinkActive="active">Template-driven Form</a></li>
+          <li><a routerLink="farray" routerLinkActive="active">Form Array</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Content Area -->
+  <div class="content col-9">
+    <router-outlet></router-outlet>
+  </div>
+</div>

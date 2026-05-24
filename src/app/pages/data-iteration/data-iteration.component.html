@@ -1,0 +1,41 @@
+<h2>1 : Array of strings</h2>
+<ul>
+  <li *ngFor="let fruit of fruits">{{ fruit }}</li>
+</ul>
+<hr />
+<h2>2 : Array of objects</h2>
+<ul>
+  <li *ngFor="let user of users">
+    {{ user.name }} - {{ user.age }} years old
+  </li>
+</ul>
+<hr />
+<h2>3 : Nested objects</h2>
+<ul>
+  <li *ngFor="let emp of employees">
+    {{ emp.name }}
+    <ul>
+      <li>{{ emp.address.city }}</li>
+    </ul>
+  </li>
+</ul>
+<hr />
+<h2>4 : Array of arrays</h2>
+<ul>
+  <li *ngFor="let num of numbers">
+    Group {{ num[0] }}:
+    <ul>
+      <li *ngFor="let member of num.slice(1)">{{ member }}</li>
+    </ul>
+  </li>
+</ul> 
+<hr/>
+<h2>5. Array Inside Object (Real time API)</h2>
+<ul>
+  <li *ngFor="let student of students">
+    {{ student.name }}
+    <ul>
+      <li>{{ student.marks }}</li>
+    </ul>
+  </li>
+</ul>

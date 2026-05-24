@@ -1,0 +1,164 @@
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="card p-2 w-50">
+    <h3 class="text-center mb-4">Reactive Form</h3>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="mb-1">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="name"
+          placeholder="Name"
+        />
+        <small
+          class="text-danger"
+          *ngIf="f['name'].touched && f['name'].errors?.['required']"
+          >Name required</small
+        >
+      </div>
+
+      <div class="mb-1">
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Email"
+        />
+        <small class="text-danger" *ngIf="f['email'].errors?.['email']"
+          >Invalid email</small
+        >
+      </div>
+
+      <div class="mb-1">
+        <input
+          type="text"
+          class="form-control"
+          maxlength="10"
+          formControlName="phone"
+          placeholder="Phone Number"
+        />
+        <small class="text-danger" *ngIf="f['phone'].errors?.['pattern']"
+          >Invalid mobile number</small
+        >
+      </div>
+
+      <div class="mb-1 row">
+        <div class="col-10">
+          <input
+            [type]="show ? 'text' : 'password'"
+            class="form-control"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <small class="text-danger" *ngIf="f['password'].errors?.['minlength']"
+            >Minimum 6 characters required</small
+          >
+        </div>
+        <div class="col-2 pt-1">
+          <button
+            class="border 1px white"
+            type="button"
+            (click)="togglePassword()"
+            *ngIf="show"
+          >
+            👁️
+          </button>
+          <button
+            class="border 1px white"
+            type="button"
+            (click)="togglePassword()"
+            *ngIf="!show"
+          >
+            🙈
+          </button>
+        </div>
+      </div>
+      <div class="mb-1 row">
+        <div class="col-10">
+          <input
+            [type]="cshow ? 'text' : 'password'"
+            class="form-control"
+            formControlName="cpassword"
+            placeholder="Confirm Password"
+          />
+          <small
+            class="text-danger"
+            *ngIf="f['cpassword'].errors?.['minlength']"
+            >Minimum 6 characters required</small
+          >
+        </div>
+        <div class="col-2 pt-1">
+          <button
+            class="border 1px white"
+            type="button"
+            (click)="ctogglePassword()"
+            *ngIf="cshow"
+          >
+            👁️
+          </button>
+          <button
+            class="border 1px white"
+            type="button"
+            (click)="ctogglePassword()"
+            *ngIf="!cshow"
+          >
+            🙈
+          </button>
+        </div>
+      </div>
+      <div
+        *ngIf="
+          userForm.get('cpassword')?.touched &&
+          userForm.get('password')?.value !== userForm.get('cpassword')?.value
+        "
+        class="text-danger mt-1"
+      >
+        Password and Confirm Password do not match
+      </div>
+      <div class="mb-1">
+        <label class="me-3"
+          ><input type="radio" value="Male" formControlName="gender" />
+          Male</label
+        >
+        <label
+          ><input type="radio" value="Female" formControlName="gender" />
+          Female</label
+        >
+      </div>
+
+      <div class="mb-1">
+        <select class="form-select" formControlName="city">
+          <option value="">Select City</option>
+          <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+        </select>
+      </div>
+
+      <div class="mb-1">
+        <label
+          ><input type="checkbox" formControlName="active" /> Active User</label
+        >
+      </div>
+
+      <div formGroupName="hobbies" class="mb-1">
+        <label class="me-3"
+          ><input type="checkbox" formControlName="reading" /> Reading</label
+        >
+        <label class="me-3"
+          ><input type="checkbox" formControlName="coding" /> Coding</label
+        >
+        <label><input type="checkbox" formControlName="gaming" /> Gaming</label>
+      </div>
+      <button class="btn btn-primary w-100" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+<hr />
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="card p-2 w-50">
+    <h3 class="text-center mb-4">Submitted Users</h3>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let users of submittedUsers">
+        {{ users | json }}
+      </li>
+    </ul>
+  </div>
+</div>

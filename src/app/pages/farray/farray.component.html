@@ -17,7 +17,7 @@
                         <p *ngIf="skill.get('Experience')?.touched && skill.get('Experience')?.invalid">Experience is required</p>  
                     </div>
                     <div class="col-2">
-                        <button type="button" class="btn btn-danger btn-sm" (click)="removeSkill(i)">Remove</button>
+                        <button *ngIf="i !== 0" type="button" class="btn btn-danger btn-sm" (click)="removeSkill(i)">Remove</button>
                     </div>   
                 </div>
             </div>

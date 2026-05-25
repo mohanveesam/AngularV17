@@ -1,0 +1,39 @@
+<h2>Structural Directives</h2>
+<div class="row mx-0">
+    <div class="col-4">
+        <h5>------*ngIf------</h5>
+        <div *ngIf="showdata">Data is visible</div>
+        <button (click)="show()">To show data</button>
+    </div>
+    <div class="col-4">
+        <h5>------*ngFor------</h5>
+        <ol>
+            <li *ngFor="let item of items">{{ item }}</li>
+        </ol>
+    </div>
+    <div class="col-4">
+        <h5>------*ngSwitch------</h5>
+        <div [ngSwitch]="role">
+            <p *ngSwitchCase="'admin'">You are an admin.</p>
+            <p *ngSwitchCase="'user'">You are a user.</p>
+            <p *ngSwitchDefault>Unknown role.</p>
+        </div>
+    </div>
+</div>
+<hr />
+<h2>Attribute Directives</h2>
+<h5>------ngClass------</h5>
+<div [ngClass]="isActive ? 'active' : 'inactive'">This text will be styled based on the isActive property.</div>
+<button (click)="makeactive()">Make it active by using ngClass</button>
+<hr />
+<h5>------ngStyle------</h5>
+<p [ngStyle]="{'color': textcolor, 'font-size': textsize}">
+    This text will be styled based on the textcolor and textsize properties.</p>
+
+<p [ngStyle]="{'color': iserror ? 'green' : 'red', 'font-size': '20px'}">
+    This text will be styled based on the iserror property.
+</p>
+<button (click)="correcterror()">Correct error by using ngStyle turn into green</button>
+<hr />
+<h2>------Custom Directive------</h2>
+<p appHighlight>Hey hover on me, I will highlight with yellow background</p>

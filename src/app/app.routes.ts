@@ -30,7 +30,17 @@ export const routes: Routes = [
         path: 'farray',
         loadComponent: () =>
           import('./pages/farray/farray.component').then((m) => m.FarrayComponent),
-      }
+      },
+      {
+        path: 'usersapi',
+        loadComponent: ()=>
+        import('./pages/usercomp/usercomp.component').then((m) => m.UsercompComponent)
+      },
+            {
+        path: 'directives',
+        loadComponent: ()=>
+        import('./pages/directives/directives.component').then((m) => m.DirectivesComponent)
+      },
     ],
   },
 ];

@@ -36,11 +36,31 @@ export const routes: Routes = [
         loadComponent: ()=>
         import('./pages/usercomp/usercomp.component').then((m) => m.UsercompComponent)
       },
-            {
+      {
         path: 'directives',
         loadComponent: ()=>
         import('./pages/directives/directives.component').then((m) => m.DirectivesComponent)
       },
+      {
+        path: 'pipes',
+        loadComponent: ()=>
+        import('./pages/pipes/pipes.component').then((m) => m.PipesComponent)
+      },
+      {
+        path: 'dbinding',
+        loadComponent: ()=>
+        import('./pages/dbinding/dbinding.component').then((m) => m.DbindingComponent)
+      },
+      {
+        path: 'crud',
+        loadComponent: ()=>
+        import('./pages/crud/crud.component').then((m) =>m.CrudComponent)
+      },
+      {
+        path: 'parent',
+        loadComponent: ()=>
+        import('./pages/parent/parent.component').then((m) =>m.ParentComponent)
+      }
     ],
   },
 ];

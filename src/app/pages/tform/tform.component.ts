@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { PwdToggleDirective } from '../../directives/pwd-toggle.directive';
 
 @Component({
   selector: 'app-tform',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, MatIconModule, PwdToggleDirective],
   templateUrl: './tform.component.html',
   styleUrl: './tform.component.css',
 })
@@ -14,6 +16,7 @@ export class TformComponent {
   user = {
     name: '',
     email: '',
+    password: '',
   };
   onSubmit(form: any) {
     console.log(form);

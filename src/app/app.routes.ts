@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { AppointmentComponent } from './doctor-appointment/appointment/appointment.component';
 
 export const routes: Routes = [
       {
@@ -57,10 +58,15 @@ export const routes: Routes = [
         import('./pages/crud/crud.component').then((m) =>m.CrudComponent)
       },
       {
-        path: 'parent',
+        path: 'employee',
         loadComponent: ()=>
-        import('./pages/parent/parent.component').then((m) =>m.ParentComponent)
-      }
+        import('./employee/emp/emp.component').then((m) =>m.EmpComponent)
+      },
+        {
+        path: 'appointment',
+        loadComponent: ()=>
+        import('./doctor-appointment/appointment/appointment.component').then((m) =>m.AppointmentComponent)
+      },
     ],
   },
 ];

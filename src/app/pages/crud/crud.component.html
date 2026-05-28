@@ -1,0 +1,43 @@
+<div class="">
+    <div class="card w-80">
+        <form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+            <input type="text" formControlName="name" placeholder="Name"/>
+            <input type="number" formControlName="age" placeholder="Age"/>
+            <div formArrayName="skills">
+                <div *ngFor="let skill of skills.controls; let i=index" [formGroupName]="i">
+                    <input type="text" formControlName="technology" placeholder="Technology"/>
+                    <input type="number" formControlName="experience" placeholder="Experience"/>
+                    <button *ngIf="i !=0" type="button" (click)="removeAt(i)">Delete Skill</button>
+                </div>
+                <hr />
+                <button type="button" (click)="addSkill()">Add Skill</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+        <hr />
+        <p>Submiited emp</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Skills</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr  *ngFor="let data of empData let i= index" >
+                    <td>{{data.name}}</td>
+                    <td>{{data.age}}</td>
+                    <td>
+                        <div *ngFor="let skill of data.skills">
+                            {{skill.technology}} - {{skill.experience}}
+                        </div>
+                    </td>
+                    <td><button type="button" (click)="EditRecord(data, i)">Edit</button>
+                    <button type="button" (click)="deleteRecord(i)">Delete</button></td>
+                 </tr>
+            </tbody>
+        </table>   
+    </div>
+</div>

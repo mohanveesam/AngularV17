@@ -67,6 +67,16 @@ export const routes: Routes = [
         loadComponent: ()=>
         import('./doctor-appointment/appointment/appointment.component').then((m) =>m.AppointmentComponent)
       },
+      {
+        path: 'task',
+        loadComponent: ()=>
+        import('./task-manager/task/task.component').then((m) =>m.TaskComponent)
+      },
+      {
+        path: 'user',
+        loadComponent: ()=>
+        import('./users/user/user.component').then((m) =>m.UserComponent)
+      },
     ],
   },
 ];

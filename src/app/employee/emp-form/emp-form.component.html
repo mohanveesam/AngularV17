@@ -1,0 +1,125 @@
+<h2>
+
+  {{ data ? 'Edit Employee' : 'Add Employee' }}
+
+</h2>
+
+<form [formGroup]="employeeForm">
+
+  <!-- NAME -->
+
+  <mat-form-field appearance="outline">
+
+    <mat-label>
+      Name
+    </mat-label>
+
+    <input
+      matInput
+      type="text"
+      placeholder="Enter Name"
+      formControlName="name"
+    >
+
+  </mat-form-field>
+
+  <br><br>
+
+  <!-- AGE -->
+
+  <mat-form-field appearance="outline">
+
+    <mat-label>
+      Age
+    </mat-label>
+
+    <input
+      matInput
+      type="number"
+      placeholder="Enter Age"
+      formControlName="age"
+    >
+
+  </mat-form-field>
+
+  <br><br>
+
+  <!-- FORM ARRAY -->
+
+  <div formArrayName="skills">
+
+    <div
+      *ngFor="let skill of skills.controls; let i=index"
+      [formGroupName]="i"
+    >
+
+      <mat-form-field appearance="outline">
+
+        <mat-label>
+          Technology
+        </mat-label>
+
+        <input
+          matInput
+          type="text"
+          placeholder="Enter Technology"
+          formControlName="technology"
+        >
+
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+
+        <mat-label>
+          Experience
+        </mat-label>
+
+        <input
+          matInput
+          type="number"
+          placeholder="Enter Experience"
+          formControlName="experience"
+        >
+
+      </mat-form-field>
+
+      <button
+        mat-button
+        color="warn"
+        type="button"
+        (click)="removeSkill(i)"
+      >
+        Remove
+      </button>
+
+      <br><br>
+
+    </div>
+
+  </div>
+
+  <!-- ADD SKILL -->
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="button"
+    (click)="addSkill()"
+  >
+    Add Skill
+  </button>
+
+  <br><br>
+
+  <!-- SUBMIT -->
+
+  <button
+    mat-raised-button
+    color="accent"
+    type="button"
+    (click)="submit()"
+  >
+    Submit
+  </button>
+
+</form>

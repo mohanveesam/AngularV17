@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
-import { AppointmentComponent } from './doctor-appointment/appointment/appointment.component';
+
 
 export const routes: Routes = [
       {
@@ -76,6 +76,11 @@ export const routes: Routes = [
         path: 'user',
         loadComponent: ()=>
         import('./users/user/user.component').then((m) =>m.UserComponent)
+      },
+            {
+        path: 'visitor',
+        loadComponent: ()=>
+        import('./visitor-manager/visitor/visitor.component').then((m) =>m.VisitorComponent)
       },
     ],
   },

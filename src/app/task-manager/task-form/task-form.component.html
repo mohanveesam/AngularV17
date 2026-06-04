@@ -1,0 +1,178 @@
+<h2 mat-dialog-title>
+  {{ data?.task ? "Edit Task" : "Add Task" }}
+</h2>
+<div class="p-3">
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <!-- Title -->
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Task Title</mat-label>
+
+          <input matInput formControlName="title" />
+
+          <mat-error *ngIf="f['title'].hasError('required')">
+            Title is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Assigned -->
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Assigned To</mat-label>
+
+          <input matInput formControlName="assignedTo" />
+        </mat-form-field>
+      </div>
+
+      <!-- Start Date -->
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Start Date</mat-label>
+
+          <input
+            matInput
+            [matDatepicker]="startPicker"
+            formControlName="startDate"
+          />
+
+          <mat-datepicker-toggle matSuffix [for]="startPicker">
+          </mat-datepicker-toggle>
+
+          <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <!-- Due Date -->
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Due Date</mat-label>
+
+          <input
+            matInput
+            [matDatepicker]="duePicker"
+            formControlName="dueDate"
+          />
+
+          <mat-datepicker-toggle matSuffix [for]="duePicker">
+          </mat-datepicker-toggle>
+
+          <mat-datepicker #duePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <!-- Priority -->
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Priority</mat-label>
+
+          <mat-select formControlName="priority">
+            <mat-option *ngFor="let item of priorityList" [value]="item">
+              {{ item }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Status -->
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Status</mat-label>
+
+          <mat-select formControlName="status">
+            <mat-option *ngFor="let item of statusList" [value]="item">
+              {{ item }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Hours -->
+      <div class="col-md-6 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Estimated Hours</mat-label>
+
+          <input matInput formControlName="estimatedHours" />
+
+          <mat-error *ngIf="f['estimatedHours'].hasError('pattern')">
+            Only numbers allowed
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Description -->
+      <div class="col-md-12 mb-3">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Description</mat-label>
+
+          <textarea matInput rows="3" formControlName="description"> </textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <div class="col-12 mb-3">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h5 class="m-0">Activity Logs</h5>
+          <button
+            type="button"
+            mat-raised-button
+            color="primary"
+            (click)="addActivity()"
+          >
+            Add Activity
+          </button>
+        </div>
+      </div>
+      <div formArrayName="activityLogs">
+        <div
+          *ngFor="let activity of activityLogs.controls; let i = index"
+          [formGroupName]="i"
+          class="row border rounded p-2 mb-2"
+        >
+          <div class="col-md-5">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Comment</mat-label>
+              <input matInput formControlName="comment" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Updated By</mat-label>
+              <input matInput formControlName="updatedBy" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="updatedDate"
+              />
+              <mat-datepicker-toggle matSuffix [for]="picker">
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-md-1 d-flex align-items-center">
+            <button
+              type="button"
+              mat-icon-button
+              color="warn"
+              (click)="removeActivity(i)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-danger mb-2" *ngIf="taskForm.hasError('invalidDate')">
+      Due Date cannot be before Start Date
+    </div>
+    <hr />
+    <button mat-button type="button" (click)="close()">Cancel</button>
+    <button mat-raised-button color="primary">Submit</button>
+  </form>
+</div>

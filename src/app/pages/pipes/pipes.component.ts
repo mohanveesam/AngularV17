@@ -19,7 +19,7 @@ export class PipesComponent {
   percentage = 0.75;
   employee = {
     id: 1,
-    name: 'Mohan'
+    name: 'mohan'
   };
 
 

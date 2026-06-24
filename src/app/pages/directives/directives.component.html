@@ -8,7 +8,7 @@
     <div class="col-4">
         <h5>------*ngFor------</h5>
         <ol>
-            <li *ngFor="let item of items">{{ item }}</li>
+            <li *ngFor="let item of items; trackBy: trackById">{{ item }}</li>
         </ol>
     </div>
     <div class="col-4">

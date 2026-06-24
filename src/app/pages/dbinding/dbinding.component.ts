@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DatashareService } from '../../services/datashare.service';
 
 @Component({
   selector: 'app-dbinding',
@@ -9,7 +10,8 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './dbinding.component.html',
   styleUrl: './dbinding.component.css'
 })
-export class DbindingComponent {
+export class DbindingComponent implements OnInit {
+  constructor(private ds: DatashareService) { }
   //Interpolation
   name: string = "Angular"; 
 
@@ -23,8 +25,24 @@ export class DbindingComponent {
     this.count++;
   }
   decre(){
-    this.count--;
+    if(this.count <= 0){
+      alert("Count cannot be negative");
+    }
+    else {
+      this.count--;
+    }
+    // this.count--;
   }
 
   username ="";
+
+
+
+  ///Compoennt BBBBBBB
+  recieveData : string = "";
+  ngOnInit(){
+    this.ds.currentData.subscribe((value) => {
+      this.recieveData = value;
+    });
+  }
 }

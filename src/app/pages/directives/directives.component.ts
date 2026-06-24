@@ -20,6 +20,10 @@ export class DirectivesComponent {
   // *ngFor directive example
   items: string[] = ['Car', 'Bike', 'Jet'];
 
+  trackById(index: number): number {
+    return index;
+  }
+
   //*ngSwitch directive example
   role : string = 'admin';
 
@@ -33,7 +37,7 @@ export class DirectivesComponent {
   textcolor :string = 'blue';
   textsize : string = '20px'; 
 
-  iserror : boolean = false;
+  iserror : boolean = true;
   correcterror(){
     this.iserror = !this.iserror;
   }

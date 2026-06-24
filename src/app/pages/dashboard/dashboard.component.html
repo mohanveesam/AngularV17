@@ -1,7 +1,110 @@
+<!-- 1. Get api integration
 <button (click)="getdata()"> call api</button>
-
 <div *ngFor="let user of users">
     <p>{{user.id}}</p>
     <p>{{user.title}}</p>
     <p>{{user.body}}</p>
+</div> -->
+
+
+<!-- 
+2. Search filter using ngmodel
+<input
+  type="text"
+  placeholder="Search Fruit"
+  [(ngModel)]="searchText"
+/>
+<ul>
+  <li *ngFor="let fruit of filteredFruits">
+    {{ fruit }}
+  </li>
+</ul> -->
+
+
+
+<!-- 3. Search filter using event binding -->
+<!-- <input
+  type="text"
+  placeholder="Search User"
+  (input)="searchUser($event)"
+/>
+<ul>
+  <li *ngFor="let user of filteredUsers">
+    {{ user }}
+  </li>
+</ul> -->
+
+
+
+<!-- 4. Component interaction using @Input and @Output
+<h2>Parent Component</h2>
+<p>Sending to Child: {{ message }}</p>
+<p>Received from Child: {{ receivedMessage }}</p>
+<app-dash-child
+  [parentData]="message"
+  (childEvent)="receiveData($event)">
+</app-dash-child> -->
+
+
+
+<!-- 5. Component interaction using service and BehaviorSubject
+<h2> Component AAAAAAAA</h2> 
+<input
+  type="text"
+  [(ngModel)]="message"
+  placeholder="Enter Message" 
+/>
+<button (click)="sendData()">
+  Send
+</button> -->
+
+
+<!-- 6.Direcctive task -->
+<!-- <div class="row">
+  <div class="col-6">
+    <button (click)="showBlock('A')">
+      A Block
+    </button>
+  </div>
+  <div class="col-6">
+    <button (click)="showBlock('B')">
+      B Block
+    </button>
+  </div>
 </div>
+<hr>
+<div *ngIf="activeBlock === 'A'">
+  <h3>A Block Data</h3>
+  <p>This is A block content.</p>
+</div>
+<div *ngIf="activeBlock === 'B'">
+  <h3>B Block Data</h3>
+  <p>This is B block content.</p>
+</div> -->
+
+
+
+<!-- 7.search debounce using rxjs -->
+<input
+  type="text"
+  [formControl]="searchControl"
+  placeholder="Search User"
+/>
+
+<ul>
+  <li *ngFor="let user of filteredUsers">
+    {{ user }}
+  </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
